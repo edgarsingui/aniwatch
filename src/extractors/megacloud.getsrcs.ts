@@ -886,7 +886,7 @@ export async function getSources(xrax: string) {
        // const str = btoa(String.fromCharCode.apply(null, new Uint8Array(Q8)));
 
         // decoding encrypted .m3u8 file url
-        res.sources = M(res.sources, "68cec4a8991542ab89cd2922ab21c32959a11e37b81297974cfcd3ffcf6b30b0") as unencryptedSrc[];
+        res.sources = M(res.sources, "217b4f4cbd4baeb5bdaeb43096f55c9095f7ab789a7498dda782473eaee2c791") as unencryptedSrc[];
 
         return res;
     } catch (err) {
