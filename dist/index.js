@@ -15155,6 +15155,8 @@ async function getSources(xrax) {
       method: "GET",
       mode: "cors"
     })).json();
+    let key = await fetch("https://raw.githubusercontent.com/itzzzme/megacloud-keys/refs/heads/main/key.txt");
+    let key_text = await key.text();
     let Q3 = fake_window.localStorage.kversion;
     let Q1 = z(Q3);
     let Q5 = fake_window.navigate();
@@ -15162,7 +15164,7 @@ async function getSources(xrax) {
     let Q8;
     Q8 = resp_json.t != 0 ? (i(Q5, Q1), Q5) : (Q8 = resp_json.k, i(Q8, Q1), Q8);
     res = resp_json;
-    res.sources = M(res.sources, "68cec4a8991542ab89cd2922ab21c32959a11e37b81297974cfcd3ffcf6b30b0");
+    res.sources = M(res.sources, key_text);
     return res;
   } catch (err) {
     log.error(err);

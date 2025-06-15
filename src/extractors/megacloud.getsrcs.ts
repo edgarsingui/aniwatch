@@ -868,6 +868,10 @@ export async function getSources(xrax: string) {
             })
         ).json();
 
+        let key = await fetch('https://raw.githubusercontent.com/itzzzme/megacloud-keys/refs/heads/main/key.txt');
+        let key_text = await key.text();
+
+
         // console.info(resp_json);
 
         //let encrypted = resp_json.sources;
@@ -886,7 +890,7 @@ export async function getSources(xrax: string) {
        // const str = btoa(String.fromCharCode.apply(null, new Uint8Array(Q8)));
 
         // decoding encrypted .m3u8 file url
-        res.sources = M(res.sources, "217b4f4cbd4baeb5bdaeb43096f55c9095f7ab789a7498dda782473eaee2c791") as unencryptedSrc[];
+        res.sources = M(res.sources, key_text) as unencryptedSrc[];
 
         return res;
     } catch (err) {
