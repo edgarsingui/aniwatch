@@ -3,11 +3,11 @@ import crypto from "crypto";
 import { HiAnimeError } from "../hianime/error.js";
 import { getSources } from "./megacloud.getsrcs.js";
 
-// https://megacloud.tv/embed-2/e-1/dBqCr5BcOhnD?k=1
+// https://megacloud.blog/embed-2/e-1/dBqCr5BcOhnD?k=1
 
 const megacloud = {
-    script: "https://megacloud.tv/js/player/a/prod/e1-player.min.js?v=",
-    sources: "https://megacloud.tv/embed-2/ajax/e-1/getSources?id=",
+    script: "https://megacloud.blog/js/player/a/prod/e1-player.min.js?v=",
+    sources: "https://megacloud.blog/embed-2/ajax/e-1/getSources?id=",
 } as const;
 
 export type track = {
@@ -233,8 +233,11 @@ class MegaCloud {
         }
     }
 
-    // https://megacloud.tv/embed-2/e-1/1hnXq7VzX0Ex?k=1
+    // https://megacloud.blog/embed-2/e-1/1hnXq7VzX0Ex?k=1
     async extract2(embedIframeURL: URL): Promise<ExtractedData> {
+
+        // console.info( embedIframeURL);
+
         try {
             const extractedData: ExtractedData = {
                 tracks: [],
@@ -250,6 +253,8 @@ class MegaCloud {
             };
 
             const xrax = embedIframeURL.pathname.split("/").pop() || "";
+
+            // console.error(xrax);
 
             const resp = await getSources(xrax);
             if (!resp) return extractedData;

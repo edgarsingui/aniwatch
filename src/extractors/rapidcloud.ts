@@ -9,7 +9,7 @@ type extractReturn = {
     subtitles: Subtitle[];
 };
 
-// https://megacloud.tv/embed-2/e-1/IxJ7GjGVCyml?k=1
+// https://megacloud.blog/embed-2/e-1/IxJ7GjGVCyml?k=1
 class RapidCloud {
     // private serverName = "RapidCloud";
     private sources: Video[] = [];
